@@ -1,7 +1,7 @@
 ntailq
 ======
 
-NTAILQ is macros of *BSD's TAILQ **with counter**.
+NTAILQ is macros of \*BSD's TAILQ *with counter*.
 
 
 EXAMPLE
@@ -16,6 +16,8 @@ EXAMPLE
 		NTAILQ_ENTRY(elem) list;
 	};
 	
+	NTAILQ_HEAD(ntqhead, elem) ntq_head;
+	
 	struct elem *
 	elem_new(void)
 	{
@@ -29,8 +31,8 @@ EXAMPLE
 	{
 		struct elem *e;
 	
-		/* initialized */
-		NTAILQ_HEAD(, elem) ntq_head = NTAILQ_HEAD_INITIALIZER(ntq_head);
+		/* initialize */
+		NTAILQ_INIT(&ntq_head);
 		printf("%d\n", NTAILQ_N(&ntq_head));	/* result 0 */
 	
 		/* add element */
